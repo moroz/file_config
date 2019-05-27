@@ -34,7 +34,7 @@ defmodule FileConfig.Handler.Csv do
     config = update.config
 
     Lager.debug("Loading #{name} csv #{path}")
-    {time, {:ok, rec}} = :timer.tc(__MODULE__, :parse_file, [path, tid, config])
+    {time, {:ok, rec}} = :timer.tc(FileConfig.Handler.CsvStream, :parse_file, [path, tid, config])
     Lager.notice("Loaded #{name} csv #{path} #{rec} rec #{time / 1_000_000} sec")
 
     %{
